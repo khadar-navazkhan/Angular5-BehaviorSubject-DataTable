@@ -1,0 +1,122 @@
+<div class="container color-dark">
+  <div class="col">
+    <p>Add a User List</p>
+  </div>
+  <div class="col">
+    <p>User List ({{ itemCount }})</p>
+  </div>
+</div>
+<div class="container color-light" [@goals]="useritems.length">
+  <div class="col fields">
+    <p class="sm">Use the form below to add a new item</p>
+    <form (ngSubmit)="onFormSubmit(additemForm)" #additemForm="ngForm">
+      
+      <div class="field">
+        <input type="text" class="txt" [ngModel]="user.id" name="id" #id="ngModel" id="inputId" placeholder="Enter ID.." pattern="[-+]?[0-9]?[0-9]+" required>
+        <!-- UserName error block -->
+        <span *ngIf="id.invalid && (id.touched)" class="error">
+          <span *ngIf = "id.errors?.required; else onlynum">
+            ID field can't be blank
+          </span>
+          <ng-template #onlynum >
+            Id must be only Numbers
+          </ng-template> 
+        </span>
+      </div>
+      
+      <div class="field">
+        <input type="text" class="txt" [ngModel]="user.name" name="name" #name="ngModel" id="inputName" placeholder="Name.." required>
+        <!-- Name error block -->
+        <span *ngIf="name.touched" class="error">
+          <span *ngIf = "name.errors?.required">
+            Name field can't be blank
+          </span>         
+        </span>
+      </div>
+
+      <div class="field">
+        <input type="text" class="txt" [ngModel]="user.username" name="username" #username="ngModel" id="inputUsername" placeholder="User Name.." minlength ="8" required>
+        <!-- UserName error block -->
+        <span *ngIf="username.invalid && (username.touched)" class="error">
+          <span *ngIf = "username.errors?.required; else minchars">
+            UserName field can't be blank
+          </span>
+          <ng-template #minchars >
+            UserName must br of Min. 8 Chars
+          </ng-template>      
+        </span>
+      </div>
+
+      <div class="field">
+        <input type="email" class="txt" [ngModel]="user.email" name="email" #email="ngModel" id="inputEmail" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        <!-- Email error block -->
+        <span *ngIf="email.invalid && (email.touched)" class="error">
+          <span *ngIf = "email.errors?.required">
+            Email field can't be blank
+          </span>
+          <span *ngIf = "email.errors?.pattern && email.touched">
+            Enter Valid Email
+          </span>
+        </span>
+      </div>
+
+      <div class="field">
+        <input type="text" class="txt" [ngModel]="user.age" name="age" #age="ngModel" id="inputAge" placeholder="Age.." pattern="[-+]?[0-9]?[0-9]+" required>
+        <!-- UserName error block -->
+        <span *ngIf="age.invalid && (age.touched)" class="error">
+          <span *ngIf = "age.errors?.required; else onlynum">
+            Age field can't be blank
+          </span>
+          <ng-template #onlynum >
+            Only Numeric
+          </ng-template>
+        </span>
+      </div>
+
+      <input type="submit" class="btn btn-success" value="{{btnText}}" [disabled]="!additemForm.form.valid">
+    </form>
+  </div>
+  <div class="col">
+    <div class="life-container">
+      <table cellspacing='0' class="details">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>    
+          <tr class=detail-{{i}} *ngFor="let useritem of useritems; let i = index">
+            <td>{{ i+1 }}</td>
+            <td>{{ useritem.id }}</td>
+            <td>{{ useritem.name }}</td>
+            <td>{{ useritem.username }}</td>
+            <td>{{ useritem.email }}</td>
+            <td>{{ useritem.age }}</td>
+            <td class="tcenter remove" (click)="removeItem(i)"><span>X</span></td>
+          </tr>
+        </tbody>
+      </table>    
+    </div>
+  </div>  
+</div>
+
+<div class="datatableWrapper">
+  <h3>Ngx-DataTable version</h3>
+  <div class="datatable">    
+      <ngx-datatable
+      class="material"
+        [rows]="rows"
+        [columns]="columns"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [limit]="10">
+      </ngx-datatable>
+    </div>
+</div>

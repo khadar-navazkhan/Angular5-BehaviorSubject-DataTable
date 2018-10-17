@@ -1,0 +1,68 @@
+.container {
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+.col {
+    padding: .4em 1.3em;
+}
+.color-dark {
+    background: #2885C4;
+}
+.color-light {
+    background: #57B3F1;
+}
+
+input.txt {
+    border: 0;
+    padding: 1em;
+    width: 80%;
+}
+input.btn {
+    border: 0;
+    display:block;
+    padding:1em 3em;
+    background:#A5F883;
+    color:#003A61;
+    margin-bottom:1em;
+    cursor:pointer;
+}
+
+.life-container {
+    background:#3FA0E1;
+    padding:.5em;
+    font-weight:bold;
+    cursor:pointer;
+}
+.tcenter {
+    text-align: center;
+}
+.life-container table {
+    border: solid 1px #fff;
+    width: 100%;
+
+}
+.life-container table tr td {
+    border-right: solid 1px #fff;
+}
+.life-container table tr td:last-child {
+    border-right: none;
+}
+.remove {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+}
+.datatableWrapper {
+    margin-top: 50px;
+}
+.datatable {
+    background: #57B3F1;
+    padding: 1em;
+}
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner {
+    background-color: #fff !important;
+    color: #2885C4;
+    font-size: 14px;
+    padding: 5px 5px;
+    font-weight: bold;
+}
