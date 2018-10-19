@@ -9,18 +9,22 @@ import { TableService } from './table.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+import { NgForComponent } from './ngfor/ngfor.component';
 import { TableComponent } from './table/table.component';
 import { TableRowComponent } from './table-row/table-row.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { DatatableComponent } from './datatable/datatable.component';
+import { FormsubmitComponent } from './formsubmit/formsubmit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
+    NgForComponent,
     TableComponent,
-    TableRowComponent
+    TableRowComponent,
+    DatatableComponent,
+    FormsubmitComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@
 <div class="container color-light" [@goals]="useritems.length">
   <div class="col fields">
     <p class="sm">Use the form below to add a new item</p>
+
+    <!-- Template Driven form -->
     <form (ngSubmit)="onFormSubmit(additemForm)" #additemForm="ngForm">
       
       <div class="field">
@@ -106,17 +108,8 @@
   </div>  
 </div>
 
-<div class="datatableWrapper">
-  <h3>Ngx-DataTable version</h3>
-  <div class="datatable">    
-      <ngx-datatable
-      class="material"
-        [rows]="rows"
-        [columns]="columns"
-        [columnMode]="'force'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [limit]="10">
-      </ngx-datatable>
-    </div>
-</div>
+<!-- Set Input & Output through child component -->
+<app-datatable [dataTableHeader]="dataTableHeading" [rows]="rows" [columns]="columns" (rowsRecord)="getRows($event)"></app-datatable>
+
+<!-- Output from child component -->
+<app-table-row (formSubmit)="getData($event)"></app-table-row>

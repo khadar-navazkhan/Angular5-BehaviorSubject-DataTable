@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 export class DataService {
 
+  /* array defined with default values and set as observable to be used in other components */
   private useritems = new BehaviorSubject<any>([
     {
       id: 1,
@@ -24,10 +25,5 @@ export class DataService {
   useritem = this.useritems.asObservable();
 
   constructor() { }
-
-  changeGoal(useritem) {
-    this.useritems.next(useritem);
-    this.useritems;
-  }
 
 }

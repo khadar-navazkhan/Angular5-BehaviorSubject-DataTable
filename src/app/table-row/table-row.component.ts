@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-table-row',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableRowComponent implements OnInit {
 
+  @Output() formSubmit:EventEmitter<any> = new EventEmitter;
+  outputString = 'My Test output';
+
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  sendData(){
+    this.formSubmit.emit(this.outputString);
   }
 
 }

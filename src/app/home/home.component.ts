@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
-import { ViewEncapsulation } from '@angular/core';
 
 export class User {
   id: number; 
@@ -21,8 +20,7 @@ export class User {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./home.component.scss'],  
   animations: [
 
     trigger('goals', [
@@ -52,11 +50,12 @@ export class User {
 
 export class HomeComponent implements OnInit {
 
-  itemCount: number = 4;
+  itemCount: number;
   btnText: string = 'Add an Item';  
   useritems = [];
   user: User;
-
+  dataTableHeading = 'Ngx-DataTable version';
+  rows = [];
 
   columns = [
     { prop: 'id' },
@@ -65,31 +64,34 @@ export class HomeComponent implements OnInit {
     { prop: 'email' },
     { prop: 'age' }
   ];
-  
 
-
-  constructor(private _data: DataService) { 
+  constructor(private _data: DataService) {
     this.user = new User;
-  }  
-
-  
-  
-rows = [];
+    
+  }
 
   ngOnInit() {
-    this.itemCount = this.useritems.length;
+    
     this._data.useritem.subscribe(res => {
       this.useritems = res;      
-    });    
-    this._data.changeGoal(this.useritems);
+    });
+
     console.log('Default Observable Values', this.useritems);
     this.rows = [...this.useritems];
+    this.itemCount = this.useritems.length;
+  }
+
+  getData(test){
+    console.log(test);
+  }
+
+  getRows(rows){
+    console.log(rows);
   }
 
   onFormSubmit({ value }: { value: User }) {
     this.user = value;
-    this.useritems.push(this.user);
-    this._data.changeGoal(this.useritems);    
+    this.useritems.push(this.user);   
     this.itemCount = this.useritems.length;    
     console.log('Form Group Added', this.useritems);
     this.rows.push(value);
@@ -99,9 +101,9 @@ rows = [];
 
   removeItem(i) {
     this.useritems.splice(i, 1);    
-    this._data.changeGoal(this.useritems);    
     this.itemCount = this.useritems.length;
-    console.log('Form Group Removed', this.useritems);
+    console.log('this rows', this.rows);
+    this.rows = [...this.useritems];
   }
 
 }

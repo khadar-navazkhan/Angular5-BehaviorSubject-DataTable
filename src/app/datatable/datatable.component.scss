@@ -1,0 +1,25 @@
+.datatableWrapper {
+    margin-top: 50px;
+}
+.datatable {
+    background: #57B3F1;
+    padding: 1em;
+}
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner {
+    background-color: #fff !important;
+    color: #2885C4;
+    font-size: 14px;
+    padding: 5px 5px;
+    font-weight: bold;
+}
+.ngx-datatable .datatable-body-row {
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.ngx-datatable .datatable-body-row.datatable-row-even {
+    background-color: #4ca6e3;
+}
+.ngx-datatable .datatable-body-row.active {
+    background-color: #2885C4;
+    color: #fff;
+}
