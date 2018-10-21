@@ -3,7 +3,6 @@ import { trigger,style,transition,animate,keyframes,query,stagger } from '@angul
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
 
-
 export class User {
   id: number; 
   name: string;
@@ -92,7 +91,5 @@ export class HomeComponent implements OnInit {
     this.rows = [...this.useritems]; //update rows array to update child component
     console.log('Updated rows', this.useritems);
   }
-
-  
 
 }
