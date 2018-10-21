@@ -8,7 +8,7 @@ export class DataService {
   
   
 
-  private getData = this.httpClient.get('https://my-json-server.typicode.com/khadar-navazkhan/Angular5-BehaviorSubject-DataTable')
+  private getData = this.httpClient.get('https://my-json-server.typicode.com/khadar-navazkhan/Angular5-BehaviorSubject-DataTable/db')
   .subscribe(
     (getData:any[]) => {
       console.log('getData', getData);
@@ -16,7 +16,7 @@ export class DataService {
   );
 
   /* array defined with default values and set as observable to be used in other components */
-  private useritems = new BehaviorSubject<any>(this.getData);
+  private useritems = new BehaviorSubject<any>([this.getData]);
   useritem = this.useritems.asObservable();
 
   constructor(private httpClient: HttpClient) { }
