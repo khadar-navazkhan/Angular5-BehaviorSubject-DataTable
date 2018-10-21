@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable()
 
 export class DataService {
+  
+  
+
+  private data = this.httpClient.get('').
+subscribe(
+	(data:any[]) => {
+		console.log(data);
+	}
+)
 
   /* array defined with default values and set as observable to be used in other components */
   private useritems = new BehaviorSubject<any>([
@@ -24,7 +34,7 @@ export class DataService {
   ]);
   useritem = this.useritems.asObservable();
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   setList(newList) {
     this.useritems.next(newList);

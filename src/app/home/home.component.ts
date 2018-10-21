@@ -3,6 +3,7 @@ import { trigger,style,transition,animate,keyframes,query,stagger } from '@angul
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
 
+
 export class User {
   id: number; 
   name: string;
