@@ -1,4 +1,4 @@
-  "profile": [
+[
     {
         "id": 1,
         "name": "Test 1",
@@ -12,5 +12,5 @@
         "username": "User 2",
         "email": "user2@user2.com",
         "age": 34
-      }
-  ]
+    }
+]
