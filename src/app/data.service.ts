@@ -8,7 +8,7 @@ export class DataService {
   
   
 
-  private getData = this.httpClient.get('https://my-json-server.typicode.com/khadar-navazkhan/Angular5-BehaviorSubject-DataTable/profile')
+  private getData = this.httpClient.get('https://my-json-server.typicode.com/khadar-navazkhan/Angular5-BehaviorSubject-DataTable')
   .subscribe(
     (getData:any[]) => {
       console.log('getData', getData);
