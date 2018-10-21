@@ -1,17 +1,17 @@
 <div class="datatableWrapper">
   <h3>{{ dataTableHeader }}</h3>
   <div class="datatable">    
-      <ngx-datatable
-      class="material"
-        [rows]="rows"
-        [columns]="columns"
-        [columnMode]="'force'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [limit]="10"
-        [selected]="selected"
-        [selectionType]="'single'"
-        (select)="selectRow($event)">
-      </ngx-datatable>
-    </div>
+    <ngx-datatable
+    class="material"
+      [rows]="rows"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [limit]="10"
+      [selected]="selected"
+      [selectionType]="'single'"
+      (select)="selectRow($event)">
+    </ngx-datatable>
+  </div>
 </div>

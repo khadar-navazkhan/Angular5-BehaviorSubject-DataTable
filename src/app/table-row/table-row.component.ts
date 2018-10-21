@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-table-row',
@@ -7,17 +9,22 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class TableRowComponent implements OnInit {
 
-  @Output() formSubmit:EventEmitter<any> = new EventEmitter;
-  outputString = 'My Test output';
+  user = [];
 
+  @Input() formRows: any[];
 
-  constructor() { }
+  constructor(private _subscription: DataService) { }
+  
 
-  ngOnInit() {
+  ngOnInit() {    
+    this._subscription.useritem.subscribe(user => this.user = user);
+    console.log('FormRows', this.user);
   }
 
-  sendData(){
-    this.formSubmit.emit(this.outputString);
+  removeItem(i) {
+    this.formRows.splice(i, 1);    
+    this._subscription.setList(this.user); //updated behaviorsubject using next 
+    console.log('Removed Rows', this.user);  
   }
 
 }

@@ -27,7 +27,6 @@ export class DatatableComponent implements OnInit {
   /* Event Emitted from child component to parent component home.component.ts */
   selectRow({ selected }){
     this.rowsRecord.emit(this.selected);
-    console.log('Select Event', event);
   }
 
 }

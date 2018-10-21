@@ -26,4 +26,8 @@ export class DataService {
 
   constructor() { }
 
+  setList(newList) {
+    this.useritems.next(newList);
+  }
+
 }

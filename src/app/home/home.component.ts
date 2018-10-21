@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
@@ -21,6 +21,7 @@ export class User {
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],  
+  encapsulation: ViewEncapsulation.None,
   animations: [
 
     trigger('goals', [
@@ -70,40 +71,27 @@ export class HomeComponent implements OnInit {
     
   }
 
-  ngOnInit() {
-    
+  ngOnInit() {    
     this._data.useritem.subscribe(res => {
-      this.useritems = res;      
+      this.useritems = res;    
+      this.rows = [...res];  //push results subscribed into rows array
     });
-
-    console.log('Default Observable Values', this.useritems);
-    this.rows = [...this.useritems];
+   
     this.itemCount = this.useritems.length;
   }
 
-  getData(test){
-    console.log(test);
-  }
-
-  getRows(rows){
-    console.log(rows);
+  getRows(rowDetail){
+    console.log('Selected Event Details via @Output', rowDetail[0].id); //selected child component row details
   }
 
   onFormSubmit({ value }: { value: User }) {
     this.user = value;
-    this.useritems.push(this.user);   
-    this.itemCount = this.useritems.length;    
-    console.log('Form Group Added', this.useritems);
-    this.rows.push(value);
-    console.log('this rows', this.rows);
-    this.rows = [...this.rows];
+    this.useritems.push(this.user); //update useritems array    
+    this.itemCount = this.useritems.length; //update items array count   
+    this.rows = [...this.useritems]; //update rows array to update child component
+    console.log('Updated rows', this.useritems);
   }
 
-  removeItem(i) {
-    this.useritems.splice(i, 1);    
-    this.itemCount = this.useritems.length;
-    console.log('this rows', this.rows);
-    this.rows = [...this.useritems];
-  }
+  
 
 }

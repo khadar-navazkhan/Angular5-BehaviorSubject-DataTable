@@ -1,3 +1,24 @@
-<p>
-  <button (click)="sendData()">Test</button>
-</p>
+<table cellspacing='0' class="details">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>User Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class=detail-{{i}} *ngFor="let useritem of formRows; let i = index">
+      <td>{{ i+1 }}</td>
+      <td>{{ useritem.id }}</td>
+      <td>{{ useritem.name }}</td>
+      <td>{{ useritem.username }}</td>
+      <td>{{ useritem.email }}</td>
+      <td>{{ useritem.age }}</td>
+      <td class="tcenter remove" (click)="removeItem(i)"><span>X</span></td>
+    </tr>
+  </tbody>
+</table>
